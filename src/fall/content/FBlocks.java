@@ -10,7 +10,7 @@ public class FBlocks{
         Vars.content.units().each(u -> {
             if(u.region == Core.atlas.find("error")) return;
             
-            new FallenUnitBlock(unit){{
+            new FallenUnitBlock(u){{
                 health = 40;
             }};
         });

@@ -10,9 +10,9 @@ import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 import fall.content.*;
 
-public class ExampleJavaMod extends Mod{
+public class FallenUnits extends Mod{
 
-    public ExampleJavaMod(){
+    public FallenUnits(){
         
     }
 
