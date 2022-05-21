@@ -3,6 +3,7 @@ package fall.world.blocks;
 import arc.util.io.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import mindustry.world.*;
 import mindustry.world.meta.*;
 import mindustry.graphics.*;
 
