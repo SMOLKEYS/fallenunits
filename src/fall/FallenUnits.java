@@ -18,7 +18,7 @@ public class FallenUnits extends Mod{
 
     @Override
     public void loadContent(){
-        Events.on(ClientLoadEvent.class, () -> {
+        Events.on(ClientLoadEvent.class, e -> {
             FBlocks.load();
         });
     }
