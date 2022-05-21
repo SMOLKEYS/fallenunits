@@ -27,7 +27,7 @@ public class FallenUnitBlock extends Block{
         
         @Override
         public void placed(){
-            super.placed()
+            super.placed();
             
             rot = Mathf.random(360f);
         }
