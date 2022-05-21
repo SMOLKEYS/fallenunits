@@ -37,8 +37,10 @@ public class FallenUnitBlock extends Block{
         
         @Override
         public void draw(){
-            Drawf.shadow(unit.shadowRegion, x, y, rot);
+            Drawf.shadow(unit.softShadowRegion, x, y, rot);
             Draw.rect(unit.region, x, y, rot);
+            Draw.color(Color.black);
+            Draw.rect(unit.cellRegion, x, y, rot);
         }
         
         @Override
