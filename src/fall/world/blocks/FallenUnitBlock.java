@@ -42,12 +42,13 @@ public class FallenUnitBlock extends Block{
         
         @Override
         public void draw(){
-            Draw.rect(unit.softShadowRegion, x, y, rot);
+            Draw.z(Layer.flyingUnit);
             Draw.rect(unit.region, x, y, rot);
             Draw.color(Color.black);
+            Draw.rect(unit.softShadowRegion, x, y, rot);
             Draw.rect(unit.cellRegion, x, y, rot);
             
-            if(Mathf.chance(0.03f)){
+            if(Mathf.chance(0.01f)){
                 effect.at(x + Mathf.range(unit.hitSize), y + Mathf.range(unit.hitSize));
             };
         }
