@@ -8,6 +8,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
+import mindustry.entities.*;
 import mindustry.graphics.*;
 
 public class FallenUnitBlock extends Block{
