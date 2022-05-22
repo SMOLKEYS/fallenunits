@@ -68,12 +68,13 @@ public class FallenUnit extends Block{
             }
             
             if(unit.drawCell){
-                Draw.color(Tmp.c1.set(Color.gray).lerp(team.color, Mathf.absin(4f, 1f)));
+                Draw.color(Color.darkGray);
                 Draw.rect(unit.cellRegion, x, y, rot);
             }
             
             Draw.z(Layer.groundUnit - 0.001f);
             Draw.color(Color.black);
+            Draw.alpha(0.7f);
             Draw.rect("circle-shadow", x, y, unit.hitSize * 2.3f, unit.hitSize * 2.3f);
             
             //increase smoke effect likelihood for bigger units
