@@ -39,8 +39,9 @@ public class FallenUnit extends Block{
     @Override
     public void load(){
         super.load();
-        fullIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
-        uiIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
+        unit.loadIcon();
+        fullIcon = weaponsAttached ? unit.fullIcon : unit.region;
+        uiIcon = weaponsAttached ? unit.fullIcon : unit.region;
     }
     
     public class FallenUnitBuild extends Building{
