@@ -11,7 +11,7 @@ import mindustry.world.meta.*;
 import mindustry.entities.*;
 import mindustry.graphics.*;
 
-public class FallenUnitBlock extends Block{
+public class FallenUnit extends Block{
     /** The unit drawn on the block. */
     public UnitType unit;
     /** Idle effect. */
@@ -48,10 +48,10 @@ public class FallenUnitBlock extends Block{
             Draw.rect(unit.cellRegion, x, y, rot);
             Draw.z(Layer.groundUnit - 0.001f);
             Draw.color(Color.black);
-            Draw.rect(unit.softShadowRegion, x, y, rot);
+            Draw.rect("circle-shadow", x, y, unit.hitSize + 4f, unit.hitSize + 4f);
             
             if(Mathf.chance(0.01f)){
-                effect.at(x + Mathf.range(unit.hitSize), y + Mathf.range(unit.hitSize));
+                effect.at(x + Mathf.range(unit.hitSize / 2f), y + Mathf.range(unit.hitSize / 2f));
             };
         }
         
