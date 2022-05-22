@@ -48,7 +48,7 @@ public class FallenUnit extends Block{
             Draw.rect(unit.cellRegion, x, y, rot);
             Draw.z(Layer.groundUnit - 0.001f);
             Draw.color(Color.black);
-            Draw.rect("circle-shadow", x, y, unit.hitSize + 4f, unit.hitSize + 4f);
+            Draw.rect("circle-shadow", x, y, unit.hitSize * 2.3f, unit.hitSize * 2.3f);
             
             if(Mathf.chance(0.01f)){
                 effect.at(x + Mathf.range(unit.hitSize / 2f), y + Mathf.range(unit.hitSize / 2f));
