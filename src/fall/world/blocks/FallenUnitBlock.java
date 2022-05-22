@@ -62,8 +62,8 @@ public class FallenUnitBlock extends Block{
         }
         
         @Override
-        public void read(Reads read){
-            super.read(read);
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
             
             rot = read.f();
         }
