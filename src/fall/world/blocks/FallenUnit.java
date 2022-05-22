@@ -29,17 +29,10 @@ public class FallenUnit extends Block{
         solid = true;
         destructible = true;
         hasShadow = false;
+        uiIcon = wa ? unit.fullIcon : unit.region;
         buildVisibility = BuildVisibility.shown;
         category = Category.units;
     }
-    
-    @Override
-    public TextureRegion[] icons(){
-        if(weaponsAttached){
-            return new TextureRegion[]{unit.fullIcon};
-        } else {
-            return new TextureRegion[]{unit.region};
-        }
     }
     
     public class FallenUnitBuild extends Building{
