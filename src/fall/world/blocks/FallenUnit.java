@@ -8,6 +8,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import mindustry.game.EventType.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
 import mindustry.entities.*;
@@ -39,9 +40,10 @@ public class FallenUnit extends Block{
     @Override
     public void load(){
         super.load();
-        unit.loadIcon();
-        fullIcon = weaponsAttached ? unit.fullIcon : unit.region;
-        uiIcon = weaponsAttached ? unit.fullIcon : unit.region;
+        Events.on(ClientLoadEvent.class, e -> {
+            fullIcon = weaponsAttached ? unit.fullIcon : unit.region;
+            uiIcon = weaponsAttached ? unit.fullIcon : unit.region;
+        });
     }
     
     public class FallenUnitBuild extends Building{
