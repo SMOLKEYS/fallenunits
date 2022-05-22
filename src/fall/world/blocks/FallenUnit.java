@@ -44,7 +44,7 @@ public class FallenUnit extends Block{
         public void draw(){
             Draw.z(Layer.groundUnit);
             Draw.rect(unit.region, x, y, rot);
-            Draw.color(Color.gray);
+            Draw.color(Tmp.c1.set(Color.gray).lerp(team.color, Mathf.absin(13f, 1f)));
             Draw.rect(unit.cellRegion, x, y, rot);
             Draw.z(Layer.groundUnit - 0.001f);
             Draw.color(Color.black);
