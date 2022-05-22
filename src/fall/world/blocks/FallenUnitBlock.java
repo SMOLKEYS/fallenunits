@@ -13,10 +13,13 @@ import mindustry.graphics.*;
 public class FallenUnitBlock extends Block{
     /** The unit drawn on the block. */
     public UnitType unit;
+    /** Idle effect. */
+    public Effect effect;
     
-    public FallenUnitBlock(String name, UnitType unit){
+    public FallenUnitBlock(String name, UnitType unit, Effect eff){
         super(name);
         this.unit = unit;
+        effect = eff;
         update = true;
         solid = true;
         destructible = true;
@@ -38,10 +41,14 @@ public class FallenUnitBlock extends Block{
         
         @Override
         public void draw(){
-            Drawf.shadow(unit.softShadowRegion, x, y, rot);
+            Draw.rect(unit.softShadowRegion, x, y, rot);
             Draw.rect(unit.region, x, y, rot);
             Draw.color(Color.black);
             Draw.rect(unit.cellRegion, x, y, rot);
+            
+            if(Mathf.chance(0.03f)){
+                effect.at(x + Mathf.range(unit.hitSize), y + Mathf.range(unit.hitSize));
+            };
         }
         
         @Override
