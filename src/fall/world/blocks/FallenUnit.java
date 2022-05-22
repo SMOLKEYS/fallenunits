@@ -17,17 +17,32 @@ public class FallenUnit extends Block{
     public UnitType unit;
     /** Idle effect. */
     public Effect effect;
+    /** Whether or not the weapons should also be on the unit. */
+    public boolean weaponsAttached;
     
-    public FallenUnit(String name, UnitType unit, Effect eff){
-        super(name);
+    public FallenUnit(UnitType unit, Effect eff, boolean wa){
+        if(wa){
+            super("fallen-" + unit.name + "-weapons-att");
+        }
+        super("fallen-" + unit.name);
         this.unit = unit;
         effect = eff;
+        weaponsAttached = wa;
         update = true;
         solid = true;
         destructible = true;
         hasShadow = false;
         buildVisibility = BuildVisibility.shown;
         category = Category.units;
+    }
+    
+    @Override
+    public TextureRegion[] icons(){
+        if(weaponsAttached){
+            return new TextureRegion[]{unit.fullIcon};
+        } else {
+            return new TextureRegion[]{unit.region};
+        }
     }
     
     public class FallenUnitBuild extends Building{
@@ -44,16 +59,26 @@ public class FallenUnit extends Block{
         @Override
         public void draw(){
             Draw.z(Layer.groundUnit);
-            Draw.rect(unit.region, x, y, rot);
-            Draw.color(Tmp.c1.set(Color.gray).lerp(team.color, Mathf.absin(13f, 1f)));
-            Draw.rect(unit.cellRegion, x, y, rot);
+            
+            if(weaponsAttached){
+                Draw.rect(unit.fullIcon, x, y, rot);
+            } else {
+                Draw.rect(unit.region, x, y, rot);
+            }
+            
+            if(unit.drawCell){
+                Draw.color(Tmp.c1.set(Color.gray).lerp(team.color, Mathf.absin(4f, 1f)));
+                Draw.rect(unit.cellRegion, x, y, rot);
+            }
+            
             Draw.z(Layer.groundUnit - 0.001f);
             Draw.color(Color.black);
             Draw.rect("circle-shadow", x, y, unit.hitSize * 2.3f, unit.hitSize * 2.3f);
             
-            if(Mathf.chance(0.01f)){
+            //increase smoke effect likelihood for bigger units
+            if(Mathf.chance(unit.hitSize / 2000f)){
                 effect.at(x + Mathf.range(unit.hitSize / 2f), y + Mathf.range(unit.hitSize / 2f));
-            };
+            }
         }
         
         @Override
