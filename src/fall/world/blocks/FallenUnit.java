@@ -33,7 +33,6 @@ public class FallenUnit extends Block{
         buildVisibility = BuildVisibility.shown;
         category = Category.units;
     }
-    }
     
     public class FallenUnitBuild extends Building{
         
