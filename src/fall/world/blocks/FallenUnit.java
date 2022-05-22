@@ -17,7 +17,7 @@ public class FallenUnit extends Block{
     /** Idle effect. */
     public Effect effect;
     
-    public FallenUnitBlock(String name, UnitType unit, Effect eff){
+    public FallenUnit(String name, UnitType unit, Effect eff){
         super(name);
         this.unit = unit;
         effect = eff;
