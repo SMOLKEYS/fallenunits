@@ -29,9 +29,14 @@ public class FallenUnit extends Block{
         solid = true;
         destructible = true;
         hasShadow = false;
-        uiIcon = wa ? unit.fullIcon : unit.region;
         buildVisibility = BuildVisibility.shown;
         category = Category.units;
+    }
+    
+    @Override
+    public void load(){
+        super.load();
+        fullIcon = weaponsAttached ? unit.fullIcon : unit.region;
     }
     
     public class FallenUnitBuild extends Building{
