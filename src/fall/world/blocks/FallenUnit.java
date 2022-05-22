@@ -21,10 +21,7 @@ public class FallenUnit extends Block{
     public boolean weaponsAttached;
     
     public FallenUnit(UnitType unit, Effect eff, boolean wa){
-        if(wa){
-            super("fallen-" + unit.name + "-weapons-att");
-        }
-        super("fallen-" + unit.name);
+        super(wa ? "fallen-" + unit.name + "-weapons-att" : "fallen-" + unit.name);
         this.unit = unit;
         effect = eff;
         weaponsAttached = wa;
