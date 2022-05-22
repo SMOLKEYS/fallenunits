@@ -12,6 +12,8 @@ import mindustry.world.meta.*;
 import mindustry.entities.*;
 import mindustry.graphics.*;
 
+import arc.Core.*;
+
 public class FallenUnit extends Block{
     /** The unit drawn on the block. */
     public UnitType unit;
@@ -36,7 +38,8 @@ public class FallenUnit extends Block{
     @Override
     public void load(){
         super.load();
-        fullIcon = weaponsAttached ? unit.fullIcon : unit.region;
+        fullIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
+        uiIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
     }
     
     public class FallenUnitBuild extends Building{
