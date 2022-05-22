@@ -15,7 +15,7 @@ public class FBlocks{
             }};
             new FallenUnit(u, FFx.smokeRise, true){{
                 health = (int)u.health / 3;
-            }}
+            }};
             Log.info("Created new FallenUnitBlock for unit '" + u.name + "'");
         });
     }
