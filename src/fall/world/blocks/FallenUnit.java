@@ -1,5 +1,6 @@
 package fall.world.blocks;
 
+import arc.*;
 import arc.math.*;
 import arc.util.*;
 import arc.util.io.*;
@@ -38,8 +39,8 @@ public class FallenUnit extends Block{
     @Override
     public void load(){
         super.load();
-        fullIcon = weaponsAttached ? unit.fullIcon : Core.atlas.find(unit.region.toString());
-        uiIcon = weaponsAttached ? unit.fullIcon : Core.atlas.find(unit.region.toString());
+        fullIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
+        uiIcon = weaponsAttached ? unit.fullIcon : atlas.find(unit.region.toString());
     }
     
     public class FallenUnitBuild extends Building{
