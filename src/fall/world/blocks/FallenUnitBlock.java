@@ -44,9 +44,10 @@ public class FallenUnitBlock extends Block{
         public void draw(){
             Draw.z(Layer.groundUnit);
             Draw.rect(unit.region, x, y, rot);
-            Draw.color(Color.black);
+            Draw.color(Color.gray);
             Draw.rect(unit.cellRegion, x, y, rot);
             Draw.z(Layer.groundUnit - 0.001f);
+            Draw.color(Color.black);
             Draw.rect(unit.softShadowRegion, x, y, rot);
             
             if(Mathf.chance(0.01f)){
