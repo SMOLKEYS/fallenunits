@@ -1,7 +1,5 @@
 //stolen straight from yellow-java
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.parsing.parseBoolean
 import java.io.ByteArrayOutputStream
 import java.io.OutputStream
 import java.security.MessageDigest
@@ -12,10 +10,6 @@ version = "1.0"
 val mindustryVersion = "v146"
 
 val windows = System.getProperty("os.name").lowercase().contains("windows")
-
-//project properties (used in androidCopy)
-val useBE = project.hasProperty("adb.useBE") && parseBoolean(project.property("adb.useBE").toString())
-val quickstart = project.hasProperty("adb.quickstart") && parseBoolean(project.property("adb.quickstart").toString())
 
 plugins {
     java
@@ -274,30 +268,3 @@ task("copyDeploy") {
     }
 }
 
-//TODO support for using different devices when multiple are connected (serial no.)
-task("androidCopy") {
-    group = "copy"
-    description = "Compiles a multiplatform jar and copies it to a connected device using ADB. This requires the device to have USB debugging enabled."
-    dependsOn("deploy")
-
-    val adb = if(windows) "adb.exe" else "adb"
-
-    doLast {
-        println("Copying mod to connected device...")
-
-        val target = if(useBE){ println("Using BE directory."); "io.anuke.mindustry.be" } else "io.anuke.mindustry"
-
-        exec {
-            commandLine = "$adb push ${layout.buildDirectory.get()}/libs/${project.name}.jar /sdcard/Android/data/$target/files/mods".split(' ')
-            standardOutput = System.out
-            errorOutput = System.err
-        }
-
-        if(quickstart) exec {
-            println("Starting Mindustry on connected device...")
-            commandLine = "$adb shell am start -n $target/mindustry.android.AndroidLauncher".split(' ')
-            standardOutput = System.out
-            errorOutput = System.err
-        }
-    }
-}
